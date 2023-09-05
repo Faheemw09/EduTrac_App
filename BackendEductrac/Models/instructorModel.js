@@ -1,19 +1,17 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const instructorSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    gender: { type: String, required: true },
-    dateofbirth: { type: Date },
-    department: { type: String },
-    email: { type: String, required: true },
-    contactnumber: { type: String },
-    password:{type: String, required: true}
-}, {
-    versionKey: false
+  name: { type: String, required: true },
+  gender: String,
+  dateOfBirth: Date,
+  department: String,
+  email: { type: String, required: true, unique: true }, // Make email required and unique
+  contactNumber: Number,
+  password: { type: String, required: true }, // Add password field
 });
 
-const ModelInstructor = mongoose.model("instructor", instructorSchema);
+const Instructormodel = mongoose.model('instructors', instructorSchema);
 
 module.exports = {
-    ModelInstructor
-};
+    Instructormodel
+}

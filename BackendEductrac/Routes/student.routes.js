@@ -1,29 +1,24 @@
-
-
-
-
-
 const express = require('express');
-const instructorRoutes = express.Router();
+const studentRoutes = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-const {Instructormodel} = require('../Models/instructorModel');
 const { auth } = require('../Middleware/Authmiddleware');
+const { ModelStudent } = require('../Models/Studentmodel');
 
 
 
-// Protected route example
 
-// Instructor signup
-instructorRoutes.post('/signup', async (req, res) => {
+
+
+// Student signup
+studentRoutes.post('/signup', async (req, res) => {
   try {
-    const { name, gender, dateOfBirth, department, email, contactNumber, password } = req.body;
+    const { name, gender, dateOfBirth, email, contactNumber, password } = req.body;
 
     // Check if the email already exists
-    const existingInstructor = await Instructormodel.findOne({ email });
+    const existingStudent = await ModelStudent.findOne({ email });
 
-    if (existingInstructor) {
+    if (existingStudent) {
       return res.status(400).json({ message: 'Email already exists' });
     }
 
@@ -31,38 +26,37 @@ instructorRoutes.post('/signup', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     // Create a new instructor
-    const instructor = new Instructormodel({
+    const student = new ModelStudent({
       name,
       gender,
       dateOfBirth,
-      department,
       email,
       contactNumber,
       password: hashedPassword,
     });
 
-    await instructor.save();
+    await student.save();
 
-    res.status(201).json({ message: 'Instructor registered successfully' });
+    res.status(201).json({ message: 'Student registered successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Instructor login
-instructorRoutes.post('/login', async (req, res) => {
+// Student login
+studentRoutes.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
     // Check if the instructor exists
-    const instructor = await Instructormodel.findOne({ email });
+    const student = await ModelStudent.findOne({ email });
 
-    if (!instructor) {
+    if (!student) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     // Check if the password is correct
-    const isPasswordCorrect = await bcrypt.compare(password, instructor.password);
+    const isPasswordCorrect = await bcrypt.compare(password, student.password);
 
     if (!isPasswordCorrect) {
       return res.status(401).json({ message: 'Invalid credentials' });
@@ -70,16 +64,15 @@ instructorRoutes.post('/login', async (req, res) => {
 
     // Create a JSON Web Token (JWT) for authentication
     const token = jwt.sign(
-      { email: instructor.email, id: instructor._id },
-      'masai', // Replace with your secret key
+      { email: student.email, id: student._id },
+      'masai', 
       { expiresIn: '1h' }
     );
-
-    res.status(200).json({ token, instructor });
+    console.log('token',token)
+    res.status(200).json({ token, student });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
 });
 
-
-module.exports = {instructorRoutes};
+module.exports = {studentRoutes};

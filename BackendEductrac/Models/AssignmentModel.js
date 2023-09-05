@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
 
 const assignmentSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    description: { type: String },
-    dueDate: { type: Date },
+    assignmentTitle: { type: String, required: true },
+    assignmentDescription: { type: String },
+    assignmentDueDate: { type: Date },
+    assignmentCourse: { type: String, required: true },
 }, {
     versionKey: false
 });
 
-const ModelAssignment = mongoose.model("Assignment", assignmentSchema);
+const ModelAssignment = mongoose.model("assignment", assignmentSchema);
 
 module.exports = {
     ModelAssignment
 };
+
