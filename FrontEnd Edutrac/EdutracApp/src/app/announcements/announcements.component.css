@@ -6,7 +6,13 @@
     margin: auto;
 
 }
-
+h3{
+    color:#20190e 
+    }
+    p{
+        color:#49796b ;
+    }
+    
 .heading{
     border: 1px solid rgb(221, 216, 216);
     height: 10vh;

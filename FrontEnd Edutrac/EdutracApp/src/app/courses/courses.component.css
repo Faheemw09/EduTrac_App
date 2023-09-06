@@ -17,6 +17,15 @@
     padding: 10px;
     
 }
+h2{
+color:#567ed3 ;
+}
+h3{
+    color:#49796b ;
+}
+h4{
+    color:#20190e ;
+}
 
 .course-card{
     /* border: 1px solid green; */
@@ -31,7 +40,7 @@
 }
 
 .course-card .card{
-    border-left: 10px solid rgb(218, 91, 91);
+    border-left: 10px solid #b9871c;
     /* background-color: rgb(231, 228, 228); */
     height: auto;
     width: 25vw;

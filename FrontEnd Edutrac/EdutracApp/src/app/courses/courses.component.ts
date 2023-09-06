@@ -18,7 +18,7 @@ export class CoursesComponent implements OnInit {
   }
   courses: any[] = [];
   fetchCourses() {
-    this.http.get<any[]>('http://localhost:5050/course/')
+    this.http.get<any[]>('https://brainy-gray-fashion.cyclic.app/course/')
       .subscribe((courses) => {
         this.courses = courses;
       }, (error) => {

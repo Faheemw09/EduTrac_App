@@ -7,6 +7,13 @@
     margin: auto;
 }
 
+h2{
+    color:#20190e 
+    }
+    p{
+        color:#49796b ;
+    }
+    
 .heading{
     border: 1px solid rgb(206, 204, 204);
     height: 10vh;
@@ -40,7 +47,7 @@
     padding: 10px;
     /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
     margin-bottom: 15px;
-    border-left: 8px solid blue;
+    border-left: 8px solid #010b13;
 }
 
 .title>p{

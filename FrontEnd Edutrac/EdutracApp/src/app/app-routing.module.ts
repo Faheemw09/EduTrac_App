@@ -8,6 +8,7 @@ import { LoginInstructorComponent } from './login-instructor/login-instructor.co
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { InstructorDashboardComponent } from './instructor-dashboard/instructor-dashboard.component';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,17 @@ const routes: Routes = [
   { path: 'assignments', component: AssignmentsComponent },
   { path: 'login/student', component: LoginStudentComponent },
   { path: 'login/instructor', component: LoginInstructorComponent },
-  { path: 'instructor-dashboard', component: InstructorDashboardComponent }
+  { path: 'instructor-dashboard', component: InstructorDashboardComponent },
+  {
+    path: 'student-dashboard',
+    component: StudentDashboardComponent,
+    children: [
+      { path: '', redirectTo: 'courses', pathMatch: 'full' }, // This sets the default route to 'courses'
+      { path: 'courses', component: CoursesComponent },
+      { path: 'assignments', component: AssignmentsComponent },
+      { path: 'announcements', component: AnnouncementsComponent },
+    ],
+  },
   // Add more routes as needed
 ];
 

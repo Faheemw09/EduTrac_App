@@ -30,7 +30,7 @@ ngOnInit() {
     }
   }
   fetchAnnouncements() {
-    this.http.get<any[]>('http://localhost:5050/announcement/')
+    this.http.get<any[]>('https://brainy-gray-fashion.cyclic.app/announcement/')
       .subscribe((announcements) => {
         // Manually format the date
         this.announcements = announcements.map((announcement) => ({

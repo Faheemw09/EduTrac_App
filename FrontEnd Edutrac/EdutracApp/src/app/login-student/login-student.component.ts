@@ -13,11 +13,11 @@ export class LoginStudentComponent {
   loginEmail: string = '';
   loginPassword: string = '';
   student: any = {};
-
+  isStudentLoggedIn = false;
   // Define a variable to store error messages
   errorMessage: string = '';
 
-  constructor(private http: HttpClient ,  private router: Router ,private authService: AuthService) {}
+  constructor(private http: HttpClient ,  private router: Router ,private authService: AuthService,) {}
 
   toggleForm() {
     this.isLoginForm = !this.isLoginForm;
@@ -32,7 +32,7 @@ export class LoginStudentComponent {
   
     console.log('loginData', loginData);
   
-    this.http.post(`http://localhost:5050/students/login`, loginData).subscribe(
+    this.http.post(`https://brainy-gray-fashion.cyclic.app/students/login`, loginData).subscribe(
       (response: any) => {
         console.log('Login response:', response);
   
@@ -43,8 +43,9 @@ export class LoginStudentComponent {
           this.loginPassword = '';
           alert('Login successful');
           this.authService.login();
+          this.isStudentLoggedIn = true;
           // Navigate to the home page or any other route after successful login
-          this.router.navigate(['']); // Change this to the desired route
+          this.router.navigate(['/student-dashboard']); // Change this to the desired route
         } else {
           // Handle login error, display an error message
           alert('Invalid credentials please swap to signup');
@@ -71,7 +72,7 @@ export class LoginStudentComponent {
 
     console.log("signupData",signupData)
 
-    this.http.post(`http://localhost:5050/students/signup`, signupData).subscribe(
+    this.http.post(`https://brainy-gray-fashion.cyclic.app/students/signup`, signupData).subscribe(
       (response: any) => {
         // Check if the signup was successful
         alert('Signup successful swap to login');

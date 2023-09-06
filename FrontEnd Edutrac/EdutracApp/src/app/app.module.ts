@@ -14,7 +14,9 @@ import { FooterComponent } from './footer/footer.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { InstructorDashboardComponent } from './instructor-dashboard/instructor-dashboard.component';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component'
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { DatePipe } from '@angular/common'
     AssignmentsComponent,
     AnnouncementsComponent,
     InstructorDashboardComponent,
+    StudentDashboardComponent,
     
   ],
   imports: [
@@ -37,7 +40,7 @@ import { DatePipe } from '@angular/common'
     FormsModule,
     HttpClientModule
   ],
-  providers: [ DatePipe],
+  providers: [ DatePipe,AuthService],
   bootstrap: [AppComponent],
   
 

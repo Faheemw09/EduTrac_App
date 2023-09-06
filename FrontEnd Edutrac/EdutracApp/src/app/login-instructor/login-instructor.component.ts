@@ -35,7 +35,7 @@ export class LoginInstructorComponent {
   
     console.log('loginData', loginData);
   
-    this.http.post(`http://localhost:5050/instructors/login`, loginData).subscribe(
+    this.http.post(`https://brainy-gray-fashion.cyclic.app/instructors/login`, loginData).subscribe(
       (response: any) => {
         console.log('Login response:', response);
   
@@ -76,7 +76,7 @@ export class LoginInstructorComponent {
 
     console.log("signupData",signupData)
 
-    this.http.post(`http://localhost:5050/instructors/signup`, signupData).subscribe(
+    this.http.post(`https://brainy-gray-fashion.cyclic.app/instructors/signup`, signupData).subscribe(
       (response: any) => {
         // Check if the signup was successful
         alert('Signup successful');

@@ -31,7 +31,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   fetchAssignments() {
-    this.http.get<any[]>('http://localhost:5050/assignment/')
+    this.http.get<any[]>('https://brainy-gray-fashion.cyclic.app/assignment/')
       .subscribe((assignments) => {
         // Manually format the date for each assignment
         this.assignments = assignments

@@ -79,7 +79,7 @@ showAssignmentList: boolean = false;
     };
 
     // Send a POST request to create the course
-    this.http.post('http://localhost:5050/course/create', newCourse)
+    this.http.post('https://brainy-gray-fashion.cyclic.app/course/create', newCourse)
       .subscribe((response) => {
         // Handle the response, e.g., show a success message
         alert("Course has been added")
@@ -115,7 +115,7 @@ showAssignmentList: boolean = false;
 
   fetchCourses() {
     // Fetch the list of courses from your API
-    this.http.get<any[]>('http://localhost:5050/course/')
+    this.http.get<any[]>('https://brainy-gray-fashion.cyclic.app/course/')
       .subscribe((courses) => {
         // Update the courses property with the fetched data
         this.courses = courses;
@@ -127,7 +127,7 @@ showAssignmentList: boolean = false;
 
   deleteCourse(courseId: string) {
     // Send a DELETE request to delete the course
-    this.http.delete(`http://localhost:5050/course/delete/${courseId}`)
+    this.http.delete(`https://brainy-gray-fashion.cyclic.app/course/delete/${courseId}`)
       .subscribe(() => {
         console.log(courseId)
         // Handle the successful deletion, e.g., show a success message
@@ -151,7 +151,7 @@ showAssignmentList: boolean = false;
     };
 
     // Send a POST request to create the assignment
-    this.http.post('http://localhost:5050/assignment/create', newAssignment)
+    this.http.post('https://brainy-gray-fashion.cyclic.app/assignment/create', newAssignment)
       .subscribe((response) => {
         alert('Assignment has been added');
        
@@ -165,7 +165,7 @@ showAssignmentList: boolean = false;
 
   // Function to fetch assignments
   fetchAssignments() {
-    this.http.get<any[]>('http://localhost:5050/assignment/')
+    this.http.get<any[]>('https://brainy-gray-fashion.cyclic.app/assignment/')
       .subscribe((assignments) => {
         this.assignments = assignments;
       }, (error) => {
@@ -175,7 +175,7 @@ showAssignmentList: boolean = false;
 
   // Function to delete an assignment by ID
   deleteAssignment(assignmentId: string) {
-    this.http.delete(`http://localhost:5050/assignment/delete/${assignmentId}`)
+    this.http.delete(`https://brainy-gray-fashion.cyclic.app/assignment/delete/${assignmentId}`)
       .subscribe((response) => {
         alert('Assignment has been deleted');
         console.log('Assignment deleted successfully', response);
@@ -201,7 +201,7 @@ showAssignmentList: boolean = false;
       announcementDate: this.announcementDate // Include the date field in the request
     };
 
-    this.http.post('http://localhost:5050/announcement/create', newAnnouncement)
+    this.http.post('https://brainy-gray-fashion.cyclic.app/announcement/create', newAnnouncement)
       .subscribe((response) => {
         alert('Announcement has been added');
         console.log('Announcement created successfully', response);
@@ -222,7 +222,7 @@ showAssignmentList: boolean = false;
   }
   // Fetch Announcements
   fetchAnnouncements() {
-    this.http.get<any[]>('http://localhost:5050/announcement/')
+    this.http.get<any[]>('https://brainy-gray-fashion.cyclic.app/announcement/')
       .subscribe((announcements) => {
         this.announcements = announcements;
       }, (error) => {
@@ -232,7 +232,7 @@ showAssignmentList: boolean = false;
 
   // Delete Announcement
   deleteAnnouncement(announcementId: string) {
-    this.http.delete(`http://localhost:5050/announcement/delete/${announcementId}`)
+    this.http.delete(`https://brainy-gray-fashion.cyclic.app/announcement/delete/${announcementId}`)
       .subscribe(() => {
         alert('Announcement has been deleted');
         this.fetchAnnouncements(); // Update the list of announcements
